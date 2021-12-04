@@ -2,9 +2,8 @@
 
 const maxRecurringChar = (text) => {
     let charMap = {}
-    let charArray =[]
-    let vaulesArray = []
     let maxCharValue = 0
+    let maxChar = ''
 
     for (let char of text) {
         if (charMap.hasOwnProperty(char)) {
@@ -14,16 +13,15 @@ const maxRecurringChar = (text) => {
         }
     }
 
-    charArray = Object.keys(charMap)
-    console.log(charArray)
-    vaulesArray = Object.values(charMap)
-    console.log(vaulesArray)
-    maxCharValue = Math.max(...vaulesArray)
-    console.log(maxCharValue)
-
-    return charArray[vaulesArray.indexOf(maxCharValue)]
+    for (let char in charMap) {
+        if (charMap[char] > maxCharValue) {
+            maxCharValue = charMap[char]
+            maxChar = char
         }
-    
+    }
+
+    return maxChar
+}
 
 
 console.log(maxRecurringChar('aabacada') )
